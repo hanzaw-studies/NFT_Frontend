@@ -1,26 +1,60 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import PhotoUpload from "./PhotoUpload";
 
 function App() {
+  const [currentPage, setCurrentPage] = useState('home');
+
+  const renderPage = () => {
+    switch(currentPage) {
+      case 'upload':
+        return (
+          <div className="page">
+            <button className="back-btn" onClick={() => setCurrentPage('home')}>← Back</button>
+            <h2>Upload Photo to IPFS</h2>
+            <PhotoUpload />
+          </div>
+        );
+      case 'verify':
+        return (
+          <div className="page">
+            <button className="back-btn" onClick={() => setCurrentPage('home')}>← Back</button>
+            <h2>Verify Image</h2>
+            <div className="upload-section">
+              <input type="file" accept="image/*" className="file-input" />
+              <button className="verify-btn">Verify Image</button>
+            </div>
+          </div>
+        );
+      default:
+        return (
+          <div className="home-page">
+            <h1>NFT Creator</h1>
+            <div className="main-sections">
+              <div className="section" onClick={() => setCurrentPage('upload')}>
+                <h3>Upload Image</h3>
+                <p>Upload your photo to IPFS</p>
+              </div>
+              <div className="section" onClick={() => setCurrentPage('verify')}>
+                <h3>Verify Image</h3>
+                <p>Verify image authenticity</p>
+              </div>
+            </div>
+          </div>
+        );
+    }
+  };
+
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="app">
+      <div className="user-profile">
+        <div className="profile-card">
+          <div className="avatar">👤</div>
+          <button className="wallet-btn">Connect Wallet</button>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <PhotoUpload />
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+      {renderPage()}
+    </div>
   );
 }
 
