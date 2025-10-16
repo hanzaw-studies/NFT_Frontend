@@ -4,8 +4,6 @@ This template provides a minimal setup to get React working in Vite with HMR and
 
 Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 ## Expanding the ESLint configuration
 
@@ -67,3 +65,28 @@ export default defineConfig([
   },
 ])
 ```
+
+## Project-specific: NFT Frontend
+
+Create a `.env` at the project root with the following keys for development:
+
+```
+VITE_CONTRACT_ADDRESS=0x796198F423C20047530642e4a6AD356195567662
+VITE_BACKEND_URL=http://localhost:8082
+```
+
+After changing `.env` files restart the dev server:
+
+```bash
+npm run dev
+```
+
+If your Node is older than Vite's minimum (Vite warns if Node < 20.19), upgrade Node to at least 20.19 or 22.12+.
+
+Overrides:
+- Use `.env.local` for machine-specific overrides (gitignored).
+- Use `.env.production` for production values.
+
+Notes:
+- The frontend expects a backend endpoint at `${VITE_BACKEND_URL}/NFT_Backend/api/upload` that accepts multipart form uploads and returns JSON: `{ "url": "https://.../ipfs/<cid>" }`.
+- The project uses `ethers` for contract interactions.
