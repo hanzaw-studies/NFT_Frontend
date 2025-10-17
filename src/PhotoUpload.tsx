@@ -28,7 +28,7 @@ const PhotoUpload: React.FC = () => {
   // Read configuration from Vite env variables with safe fallbacks
   const CONTRACT_ADDRESS =
     (import.meta.env as any).SMART_CONTRACT_ADDRESS ||
-    "0x796198F423C20047530642e4a6AD356195567662"; // Replace with your Sepolia V2 address
+    "0xDbb80Ec59D02650873AD9FD48E802356103b5d2D"; // Replace with your Sepolia V2 address
 
   // Smart Contract ABI (UPDATED for ImageNFT_V2)
   const CONTRACT_ABI = [
