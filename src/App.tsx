@@ -20,7 +20,7 @@ const NavBar: React.FC<{ onNavigate: (p: string) => void; route: string }> = ({
             alt="react"
             style={{ height: 28, marginLeft: 8 }}
           />
-          <span className="ms-2 fw-bold">NFT Frontend</span>
+          <span className="ms-2 fw-bold">NFT Minting and Verification</span>
         </a>
 
         <div className="d-flex gap-2">
